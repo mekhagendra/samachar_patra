@@ -1,0 +1,2 @@
+# This file ensures the assets directory is preserved in Git
+# Even if all other files in this directory are ignored

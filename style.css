@@ -1,0 +1,29 @@
+/*
+Theme Name: Samachar Patra
+Theme URI: https://samacharpatra.com/
+Description: A modern professional news theme with organized architecture. Features multi-column layouts, news categories, Nepali content support, and modern WordPress block editor compatibility. Restructured with assets/, inc/, templates/ organization for better maintainability.
+Version: 2.0.0
+Author: Samachar Patra Team
+Author URI: https://samacharpatra.com/
+Text Domain: samacharpatra
+Domain Path: /languages
+Requires at least: 5.8
+Tested up to: 6.6
+Requires PHP: 7.4
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: news, business, magazine, block-themes, full-site-editing, two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-logo, custom-menu, featured-images, footer-widgets, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, editor-style, wide-blocks
+Network: false
+Update URI: false
+
+Structure: Modern organized architecture with assets/, inc/, templates/ directories
+- assets/: CSS, JS, images, fonts, SCSS
+- inc/: Modular PHP functionality (core/, customizer/, api/, etc.)  
+- templates/: Reusable parts/ and components/
+- theme.json: Full Site Editing support
+- Modern WordPress features and security
+
+This theme follows WordPress coding standards and modern development practices.
+
+Note: All theme styles are now consolidated in assets/css/style.css for better organization and performance.
+*/

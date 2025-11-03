@@ -1,0 +1,1169 @@
+/*
+Theme Name: Samachar Patra
+Description: Admin styles for WordPress backend
+Author: samacharpatra
+Version: 2.0.0
+*/
+
+/* Samachar post type specific styles */
+.post-type-samachar .form-table th {
+    width: 150px;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.post-type-samachar .form-table td {
+    padding: 15px 10px 15px 0;
+}
+
+.post-type-samachar .form-table input[type="text"],
+.post-type-samachar .form-table textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.post-type-samachar .form-table input[type="text"]:focus,
+.post-type-samachar .form-table textarea:focus {
+    border-color: #4299e1;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+}
+
+.post-type-samachar .form-table textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+    line-height: 1.5;
+}
+
+.post-type-samachar .form-table .description {
+    color: #718096;
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Meta box styling */
+.post-type-samachar #samachar_byline.postbox,
+.post-type-samachar #samachar_details.postbox {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.post-type-samachar #samachar_byline .postbox-header,
+.post-type-samachar #samachar_details .postbox-header {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    color: white;
+    border-radius: 8px 8px 0 0;
+    border-bottom: none;
+}
+
+.post-type-samachar #samachar_byline .postbox-header h2,
+.post-type-samachar #samachar_details .postbox-header h2 {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.post-type-samachar #samachar_byline .inside,
+.post-type-samachar #samachar_details .inside {
+    padding: 20px;
+    background: #fafafa;
+}
+
+/* Checkbox styling */
+.post-type-samachar .form-table input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    accent-color: #4299e1;
+}
+
+.post-type-samachar .form-table label {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #2d3748;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.post-type-samachar .form-table label:hover {
+    color: #4299e1;
+}
+
+/* Column header styling */
+.wp-list-table.posts .column-byline {
+    width: 20%;
+}
+
+.wp-list-table.posts .column-samachar_category {
+    width: 15%;
+}
+
+.wp-list-table.posts .column-location {
+    width: 12%;
+}
+
+.wp-list-table.posts .column-featured {
+    width: 12%;
+}
+
+/* Status badges in admin columns */
+.wp-list-table .column-featured span {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Edit post screen improvements */
+.post-type-samachar #title {
+    font-size: 1.4em;
+    font-weight: 600;
+    padding: 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.post-type-samachar #title:focus {
+    border-color: #4299e1;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Category and tags meta boxes */
+.post-type-samachar #samachar_categorydiv,
+.post-type-samachar #tagsdiv-post_tag {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.post-type-samachar #samachar_categorydiv .postbox-header,
+.post-type-samachar #tagsdiv-post_tag .postbox-header {
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.post-type-samachar #samachar_categorydiv .inside,
+.post-type-samachar #tagsdiv-post_tag .inside {
+    padding: 15px;
+}
+
+/* Featured image meta box */
+.post-type-samachar #postimagediv {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.post-type-samachar #postimagediv .postbox-header {
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.post-type-samachar #postimagediv .inside {
+    padding: 15px;
+    text-align: center;
+}
+
+/* Publish meta box styling */
+.post-type-samachar #submitdiv {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.post-type-samachar #submitdiv .postbox-header {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+    border-bottom: none;
+}
+
+.post-type-samachar #submitdiv .postbox-header h2 {
+    color: white;
+}
+
+.post-type-samachar #submitdiv .inside {
+    padding: 15px;
+    background: #f7fafc;
+}
+
+/* Editor enhancements */
+.post-type-samachar #wp-content-wrap {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.post-type-samachar #wp-content-editor-tools {
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 10px;
+}
+
+/* Media upload button styling */
+.post-type-samachar .insert-media {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.post-type-samachar .insert-media:hover {
+    background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(66, 153, 225, 0.3);
+}
+
+/* Save/Update button styling */
+.post-type-samachar #publishing-action #publish {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-shadow: none;
+    box-shadow: 0 2px 4px rgba(72, 187, 120, 0.3);
+}
+
+.post-type-samachar #publishing-action #publish:hover {
+    background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(72, 187, 120, 0.4);
+}
+
+/* Preview button styling */
+.post-type-samachar #preview-action #post-preview {
+    background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.post-type-samachar #preview-action #post-preview:hover {
+    background: linear-gradient(135deg, #dd6b20 0%, #c05621 100%);
+    transform: translateY(-1px);
+}
+
+/* Quick edit enhancements */
+.post-type-samachar .inline-edit-row {
+    background: #f8f9fa;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+.post-type-samachar .inline-edit-row .inline-edit-col {
+    padding: 15px;
+}
+
+.post-type-samachar .inline-edit-row .inline-edit-save {
+    background: #f7fafc;
+    border-top: 1px solid #e2e8f0;
+    padding: 10px 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .post-type-samachar .form-table th {
+        width: auto;
+        display: block;
+        padding-bottom: 5px;
+    }
+    
+    .post-type-samachar .form-table td {
+        display: block;
+        padding-left: 0;
+    }
+    
+    .wp-list-table.posts .column-byline,
+    .wp-list-table.posts .column-samachar_category,
+    .wp-list-table.posts .column-location,
+    .wp-list-table.posts .column-featured {
+        width: auto;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .post-type-samachar .form-table input[type="text"],
+    .post-type-samachar .form-table textarea {
+        background: #2d3748;
+        color: #e2e8f0;
+        border-color: #4a5568;
+    }
+    
+    .post-type-samachar .form-table input[type="text"]:focus,
+    .post-type-samachar .form-table textarea:focus {
+        border-color: #63b3ed;
+        box-shadow: 0 0 0 2px rgba(99, 179, 237, 0.2);
+    }
+    
+    .post-type-samachar #samachar_byline .inside,
+    .post-type-samachar #samachar_details .inside {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+}
+
+/* Success/Error message styling */
+.notice.notice-success {
+    border-left-color: #48bb78;
+    background: #f0fff4;
+}
+
+.notice.notice-error {
+    border-left-color: #f56565;
+    background: #fef5f5;
+}
+
+/* Loading spinner customization */
+.post-type-samachar .spinner {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z' opacity='.25'/%3E%3Cpath d='M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z' fill='%234299e1'%3E%3CanimateTransform attributeName='transform' dur='0.75s' repeatCount='indefinite' type='rotate' values='0 12 12;360 12 12'/%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* ===== ADS ADMIN STYLES ===== */
+/* These styles are only loaded for ads management in admin */
+/* Samachar Patra Ads Manager - Admin Styles */
+
+.sp-ads-stats-summary {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.sp-stats-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    min-width: 150px;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.sp-stats-card h3 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #2271b1;
+    font-weight: 600;
+}
+
+.sp-stats-card p {
+    margin: 10px 0 0 0;
+    color: #646970;
+    font-weight: 500;
+}
+
+/* Ad List Table Styles */
+.sp-location-badge {
+    background: #f0f0f1;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #50575e;
+    font-weight: 500;
+}
+
+.sp-type-badge {
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.sp-type-image {
+    background: #e8f4fd;
+    color: #0073aa;
+}
+
+.sp-type-html {
+    background: #fff2e8;
+    color: #b86c00;
+}
+
+.sp-type-script {
+    background: #edf7ed;
+    color: #4ab866;
+}
+
+.sp-status-badge {
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.sp-status-active {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.sp-status-inactive {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.sp-ad-stats {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.sp-ad-stats .impressions {
+    color: #0073aa;
+}
+
+.sp-ad-stats .clicks {
+    color: #00a32a;
+    font-weight: 600;
+}
+
+/* No Ads State */
+.sp-no-ads {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.sp-no-ads-content h2 {
+    color: #646970;
+    margin-bottom: 10px;
+}
+
+.sp-no-ads-content p {
+    color: #646970;
+    margin-bottom: 30px;
+}
+
+/* Add/Edit Ad Form Styles */
+.sp-ad-form-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sp-ad-main-content {
+    flex: 2;
+}
+
+.sp-ad-sidebar {
+    flex: 1;
+    min-width: 300px;
+}
+
+.sp-ad-sidebar .postbox {
+    margin-bottom: 20px;
+}
+
+.sp-form-field {
+    margin-bottom: 20px;
+}
+
+.sp-form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.sp-form-field input,
+.sp-form-field select,
+.sp-form-field textarea {
+    width: 100%;
+    max-width: 100%;
+}
+
+.sp-form-field .description {
+    font-size: 12px;
+    color: #646970;
+    margin-top: 5px;
+}
+
+.sp-checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.sp-checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.sp-checkbox-group input {
+    width: auto;
+    margin-right: 8px;
+}
+
+.sp-ad-content-help {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #f0f0f1;
+    border-radius: 4px;
+    border-left: 4px solid #2271b1;
+}
+
+.sp-ad-content-help p {
+    margin: 0 0 10px 0;
+}
+
+.sp-ad-content-help code {
+    background: #fff;
+    padding: 8px;
+    border-radius: 3px;
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    word-break: break-all;
+}
+
+.sp-media-upload {
+    margin-bottom: 10px;
+}
+
+.sp-upload-image {
+    background: #2271b1;
+    color: #fff;
+    border-color: #2271b1;
+}
+
+.sp-upload-image:hover {
+    background: #135e96;
+    border-color: #135e96;
+}
+
+/* Required field indicator */
+.required {
+    color: #d63638;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .sp-ad-form-container {
+        flex-direction: column;
+    }
+    
+    .sp-ad-sidebar {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 782px) {
+    .sp-ads-stats-summary {
+        flex-direction: column;
+    }
+    
+    .sp-stats-card {
+        min-width: auto;
+    }
+    
+    .sp-checkbox-group {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Location Management Styles */
+.sp-locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sp-location-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.sp-location-card h3 {
+    margin-top: 0;
+    color: #2271b1;
+}
+
+.sp-location-meta {
+    font-size: 14px;
+    color: #646970;
+    margin-bottom: 15px;
+}
+
+.sp-location-meta .dimensions {
+    background: #f0f0f1;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.sp-location-actions {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #c3c4c7;
+}
+
+.sp-location-actions .button {
+    margin-right: 10px;
+}
+
+/* Analytics Styles */
+.sp-analytics-filters {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.sp-analytics-filters .form-table th {
+    width: 120px;
+}
+
+.sp-analytics-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.sp-chart-container {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.sp-chart-container h3 {
+    margin-top: 0;
+    color: #2271b1;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .sp-analytics-charts {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading States */
+.sp-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #2271b1;
+    border-radius: 50%;
+    animation: sp-spin 1s linear infinite;
+}
+
+@keyframes sp-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success/Error Messages */
+.sp-message {
+    padding: 12px 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.sp-message.success {
+    background: #d1e7dd;
+    border: 1px solid #badbcc;
+    color: #0f5132;
+}
+
+.sp-message.error {
+    background: #f8d7da;
+    border: 1px solid #f5c2c7;
+    color: #842029;
+}
+
+/* Button Styles */
+.sp-button-danger {
+    background: #d63638;
+    border-color: #d63638;
+    color: #fff;
+}
+
+.sp-button-danger:hover {
+    background: #b32d2e;
+    border-color: #b32d2e;
+}
+
+.sp-button-warning {
+    background: #dba617;
+    border-color: #dba617;
+    color: #fff;
+}
+
+.sp-button-warning:hover {
+    background: #c69214;
+    border-color: #c69214;
+}
+
+/* Tooltips */
+.sp-tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.sp-tooltip:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+}
+
+.sp-tooltip:hover:before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== CUSTOMIZER CONTROL STYLES ===== */
+/* These styles are only loaded in WordPress Customizer */
+
+/* Toggle Control Styles */
+/* Toggle Control Styles for WordPress Customizer */
+
+.toggle-control {
+    display: flex;
+    align-items: end;
+    margin: 10px 0;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: #2196F3;
+}
+
+input:focus + .toggle-slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+.toggle-label {
+    font-size: 13px;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Multi-Select Control Styles */
+/* Multi-Select Control Styles for WordPress Customizer */
+
+.multi-select-control {
+    margin: 10px 0;
+}
+
+.multi-select-container {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    min-height: 36px;
+}
+
+.multi-select-header {
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.multi-select-header:hover {
+    background: #f9f9f9;
+}
+
+.multi-select-title {
+    font-size: 13px;
+    color: #333;
+}
+
+.multi-select-arrow {
+    font-size: 12px;
+    color: #666;
+    transition: transform 0.2s ease;
+}
+
+.multi-select-container.open .multi-select-arrow {
+    transform: rotate(180deg);
+}
+
+.multi-select-options {
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    border-top: 1px solid #eee;
+}
+
+.multi-select-container.open .multi-select-options {
+    display: block;
+}
+
+.multi-select-option {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #f5f5f5;
+    cursor: pointer;
+}
+
+.multi-select-option:hover {
+    background: #f9f9f9;
+}
+
+.multi-select-option:last-child {
+    border-bottom: none;
+}
+
+.multi-select-checkbox {
+    margin-right: 8px;
+}
+
+.multi-select-label {
+    font-size: 13px;
+    color: #333;
+    flex: 1;
+}
+
+.multi-select-selected {
+    padding: 8px 12px;
+    min-height: 20px;
+}
+
+.multi-select-tag {
+    display: inline-block;
+    background: #0073aa;
+    color: white;
+    padding: 2px 8px;
+    margin: 2px 4px 2px 0;
+    border-radius: 3px;
+    font-size: 11px;
+    position: relative;
+}
+
+.multi-select-tag .remove-tag {
+    margin-left: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.multi-select-tag .remove-tag:hover {
+    color: #ff6b6b;
+}
+
+/* Image Radio Control Styles */
+/* Image Radio Control Styles for WordPress Customizer */
+
+.image-radio-control {
+    margin: 10px 0;
+}
+
+.image-radio-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.image-radio-option {
+    position: relative;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.image-radio-option:hover {
+    border-color: #0073aa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.image-radio-option.selected {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.3);
+}
+
+.image-radio-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.image-radio-image {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+    display: block;
+}
+
+.image-radio-label {
+    display: block;
+    text-align: center;
+    padding: 8px 4px;
+    font-size: 11px;
+    color: #333;
+    background: #f9f9f9;
+    border-top: 1px solid #eee;
+}
+
+.image-radio-option.selected .image-radio-label {
+    background: #0073aa;
+    color: white;
+}
+
+/* Check mark for selected option */
+.image-radio-option.selected::after {
+    content: "✓";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #0073aa;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .image-radio-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Typography Control Styles */
+/* Typography Control Styles for WordPress Customizer */
+
+.typography-control {
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    background: #fafafa;
+}
+
+.typography-control-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.typography-control-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.typography-option {
+    margin-bottom: 12px;
+}
+
+.typography-option:last-child {
+    margin-bottom: 0;
+}
+
+.typography-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.typography-select,
+.typography-input,
+.typography-range {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 12px;
+    background: white;
+}
+
+.typography-select:focus,
+.typography-input:focus,
+.typography-range:focus {
+    border-color: #0073aa;
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(0, 115, 170, 0.3);
+}
+
+/* Font weight options */
+.font-weight-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.font-weight-option {
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 11px;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.font-weight-option:hover {
+    border-color: #0073aa;
+}
+
+.font-weight-option.selected {
+    background: #0073aa;
+    color: white;
+    border-color: #0073aa;
+}
+
+/* Range slider styles */
+.typography-range {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: #ddd;
+    outline: none;
+    padding: 0;
+}
+
+.typography-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #0073aa;
+    cursor: pointer;
+}
+
+.typography-range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #0073aa;
+    cursor: pointer;
+    border: none;
+}
+
+/* Preview text */
+.typography-preview {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background: white;
+}
+
+.typography-preview-text {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Color picker integration */
+.typography-color-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.typography-color-preview {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+}
