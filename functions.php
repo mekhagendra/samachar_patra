@@ -1,8 +1,6 @@
 <?php
 /**
  * Samachar Patra Theme Functions
- * 
- * Modern WordPress theme with organized structure.
  *
  * @package Samachar_Patra
  * @version 2.0.0
@@ -20,41 +18,60 @@ define('SAMACHARPATRA_VERSION', '2.0.0');
 define('SAMACHARPATRA_THEME_DIR', get_template_directory());
 define('SAMACHARPATRA_THEME_URI', get_template_directory_uri());
 
+
 /**
- * Load theme files in organized order
+ * Safe file loader - ADD THIS FUNCTION FIRST
  */
-
-// Core functionality
-require_once SAMACHARPATRA_THEME_DIR . '/inc/core/setup.php';
-require_once SAMACHARPATRA_THEME_DIR . '/inc/core/enqueue.php';  
-require_once SAMACHARPATRA_THEME_DIR . '/inc/core/security.php';
-
-// Smart Date System
-require_once SAMACHARPATRA_THEME_DIR . '/inc/hooks/smart-date.php';
+function samacharpatra_safe_include($file, $required = false) {
+    $path = SAMACHARPATRA_THEME_DIR . $file;
+    
+    if (file_exists($path)) {
+        if ($required) {
+            require_once $path;
+        } else {
+            include_once $path;
+        }
+        return true;
+    }
+    
+    if ($required) {
+        error_log("Samachar Patra: Missing required file - {$file}");
+        // Create minimal fallback for critical files
+        if (strpos($file, 'setup.php') !== false) {
+            add_action('after_setup_theme', function() {
+            add_theme_support('post-thumbnails');
+            add_theme_support('title-tag');
+            });
+        }
+    }
+    
+    return false;
+}
+/**
+ * Load core files with safe loader
+ */
+samacharpatra_safe_include('/inc/core/setup.php', true);
+samacharpatra_safe_include('/inc/core/enqueue.php', true);
+samacharpatra_safe_include('/inc/core/security.php', true);
+samacharpatra_safe_include('/inc/hooks/smart-date.php', true);
 
 /**
  * Optimize upload functionality
  */
 function samacharpatra_optimize_uploads() {
-    // Increase memory for image processing if possible
     if (function_exists('ini_get') && ini_get('memory_limit') && (int)ini_get('memory_limit') < 256) {
         @ini_set('memory_limit', '256M');
     }
     
-    // Increase max execution time for uploads
     @ini_set('max_execution_time', 300);
-    
-    // Set reasonable upload limits
     @ini_set('upload_max_filesize', '32M');
     @ini_set('post_max_size', '32M');
 }
 add_action('init', 'samacharpatra_optimize_uploads');
-
 /**
  * Ensure proper MIME types for uploads
  */
 function samacharpatra_upload_mimes($mimes) {
-    // Ensure common image types are allowed
     $mimes['jpg|jpeg|jpe'] = 'image/jpeg';
     $mimes['gif'] = 'image/gif';
     $mimes['png'] = 'image/png';
@@ -65,14 +82,20 @@ function samacharpatra_upload_mimes($mimes) {
 }
 add_filter('upload_mimes', 'samacharpatra_upload_mimes');
 
-// Helper functions
-require_once SAMACHARPATRA_THEME_DIR . '/inc/helpers.php';
+/**
+ * Load helpers
+ */
+samacharpatra_safe_include('/inc/helpers.php', true);
 
-// Customizer functionality
-require_once SAMACHARPATRA_THEME_DIR . '/inc/customizer/controls.php';
-require_once SAMACHARPATRA_THEME_DIR . '/inc/customizer/register.php';
+/**
+ * Load customizer
+ */
+samacharpatra_safe_include('/inc/customizer/controls.php', false);
+samacharpatra_safe_include('/inc/customizer/register.php', false);
 
-// Legacy includes (to be migrated)
+/**
+ * Legacy includes
+ */
 $legacy_includes = array(
     '/includes/ads-manager.php',
     '/inc/forex-widget.php',
@@ -82,13 +105,12 @@ $legacy_includes = array(
 );
 
 foreach ($legacy_includes as $file) {
-    $file_path = SAMACHARPATRA_THEME_DIR . $file;
-    if (file_exists($file_path)) {
-        require_once $file_path;
-    }
+    samacharpatra_safe_include($file, false);
 }
 
-// Widget includes (organized structure)
+/**
+ * Widget includes
+ */
 $widget_files = array(
     '/widgets/province-full-widget.php',
     '/widgets/test-widget.php',
@@ -98,10 +120,7 @@ $widget_files = array(
 );
 
 foreach ($widget_files as $widget_file) {
-    $widget_path = SAMACHARPATRA_THEME_DIR . $widget_file;
-    if (file_exists($widget_path)) {
-        require_once $widget_path;
-    }
+    samacharpatra_safe_include($widget_file, false);
 }
 
 /**
@@ -122,6 +141,9 @@ function samacharpatra_register_widgets() {
     }
 }
 add_action('widgets_init', 'samacharpatra_register_widgets');
+
+
+
 
 /**
  * Theme initialization

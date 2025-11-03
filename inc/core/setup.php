@@ -231,8 +231,8 @@ class Samacharpatra_Nav_Walker extends Walker_Nav_Menu {
         $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url        ) .'"' : '';
         
         $item_output = $args->before ?? '';
-        $item_output .= '<a' . $attributes . '>';
         $item_output .= ($args->link_before ?? '') . apply_filters('the_title', $item->title, $item->ID) . ($args->link_after ?? '');
+        $item_output .= $args->after ?? '';
         if ($has_children && $depth === 0) {
             $item_output .= ' <i class="fas fa-chevron-down"></i>';
         }
@@ -251,57 +251,71 @@ class Samacharpatra_Nav_Walker extends Walker_Nav_Menu {
  * Create default categories for news site
  */
 function samacharpatra_create_default_categories() {
+    // Prevent running multiple times
     if (get_option('samacharpatra_default_categories_created')) {
         return;
     }
 
     $default_categories = array(
-        'राजनीति' => 'Politics news and updates',
-        'अर्थतन्त्र' => 'Economic news and business updates',  
-        'खेलकुद' => 'Sports news and updates',
-        'मनोरञ्जन' => 'Entertainment and celebrity news',
-        'प्रविधि' => 'Technology and innovation news',
-        'स्वास्थ्य' => 'Health and medical news',
-        'शिक्षा' => 'Education related news',
-        'अन्तर्राष्ट्रिय' => 'International news',
-        'समाज' => 'Social issues and community news'
+        'राजनीति' => 'politics',
+        'अर्थतन्त्र' => 'economy',
+        'खेलकुद' => 'sports',
+        'मनोरञ्जन' => 'entertainment',
+        'प्रविधि' => 'technology',
+        'स्वास्थ्य' => 'health',
+        'शिक्षा' => 'education',
+        'अन्तर्राष्ट्रिय' => 'international',
+        'समाज' => 'society'
     );
     
-    foreach ($default_categories as $cat_name => $cat_description) {
-        if (!get_cat_ID($cat_name)) {
-            wp_insert_category(array(
-                'cat_name' => $cat_name,
-                'category_description' => $cat_description,
-                'category_nicename' => sanitize_title($cat_name),
-                'category_parent' => 0
-            ));
+    foreach ($default_categories as $name => $slug) {
+        // Check if category already exists
+        if (!term_exists($slug, 'category')) {
+            // Use wp_insert_term() NOT wp_insert_category() (deprecated)
+            $result = wp_insert_term(
+                $name,
+                'category',
+                array(
+                    'slug' => $slug,
+                    'description' => sprintf(__('%s category', 'samacharpatra'), $name)
+                )
+            );
+            
+            // Log any errors
+            if (is_wp_error($result)) {
+                error_log('Category creation failed: ' . $result->get_error_message());
+            }
         }
     }
 
+    // Mark as completed
     update_option('samacharpatra_default_categories_created', true);
 }
-add_action('after_setup_theme', 'samacharpatra_create_default_categories');
+// CRITICAL: Run on theme activation, NOT every page load
+add_action('after_switch_theme', 'samacharpatra_create_default_categories');
 
 /**
- * Ensure Interview category exists
+ * Create interview category
  */
 function samacharpatra_create_interview_category() {
     $interview_category = get_category_by_slug('interview');
     
     if (!$interview_category) {
-        $category_id = wp_insert_term(
+        // Use wp_insert_term() NOT wp_insert_category()
+        $result = wp_insert_term(
             'Interview',
             'category',
             array(
                 'description' => 'Interview posts and Q&A sessions',
-                'slug' => 'interview',
-                'parent' => 0
+                'slug' => 'interview'
             )
         );
         
-        if (!is_wp_error($category_id)) {
-            error_log('Interview category created with ID: ' . $category_id['term_id']);
+        if (!is_wp_error($result)) {
+            error_log('Interview category created with ID: ' . $result['term_id']);
+        } else {
+            error_log('Interview category creation failed: ' . $result->get_error_message());
         }
     }
 }
-add_action('after_setup_theme', 'samacharpatra_create_interview_category');
+add_action('after_switch_theme', 'samacharpatra_create_interview_category');
