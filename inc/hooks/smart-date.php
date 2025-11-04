@@ -22,16 +22,7 @@ function get_user_location() {
         if ($timezone === 'Asia/Kathmandu') {
             return 'nepal';
         }
-    }
-    
-    // Check if user IP suggests Nepal (optional, requires GeoIP)
-    if (function_exists('geoip_country_code_by_name')) {
-        $country = geoip_country_code_by_name($_SERVER['REMOTE_ADDR']);
-        if ($country === 'NP') {
-            return 'nepal';
-        }
-    }
-    
+    }    
     // Fallback to server timezone
     $server_timezone = wp_timezone_string();
     if ($server_timezone === 'Asia/Kathmandu') {

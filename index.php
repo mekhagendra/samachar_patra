@@ -48,6 +48,7 @@ $category_routes = array(
     'agriculture' => 'agriculture',
     'world' => 'world',
     'environment' => 'environment',
+    'main' => 'main',
 );
 
 // Check if current URL matches a category route

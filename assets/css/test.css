@@ -1,0 +1,24 @@
+/* Desktop styles */
+@media (min-width: 993px) {
+    
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 992px) {
+    
+}
+
+/* Mobile styles */
+@media (min-width: 577px) and (max-width: 768px) {
+    
+}
+
+/* Small mobile styles */
+@media (min-width: 481px) and (max-width: 576px) {
+
+}
+
+/* Extra small mobile styles */
+@media (max-width: 480px) {
+    
+}

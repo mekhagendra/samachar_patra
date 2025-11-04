@@ -64,6 +64,21 @@ function samacharpatra_smart_full_date($timestamp = null) {
 }
 
 /**
+ * Get Smart Date full date time
+ * Uses the Smart Date system's full_date_time() function
+ * @param int|null $timestamp Optional timestamp, uses current time if null
+ * @return string Formatted full date time based on user location
+ * 
+ */
+function samacharpatra_smart_full_date_time($timestamp = null) {
+    if (function_exists('full_date_time')) {
+        return full_date_time($timestamp);
+    }
+    // Fallback if Smart Date not available
+    return date('F j, Y g:i A', $timestamp ?: time());
+}
+
+/**
  * Get Smart Date relative time
  * Uses the Smart Date system's relative_time() function
  * 
@@ -136,6 +151,8 @@ function samacharpatra_get_post_smart_date($format = 'short', $post_id = null) {
             return samacharpatra_smart_short_date($timestamp);
         case 'full':
             return samacharpatra_smart_full_date($timestamp);
+        case 'full_date_time':
+            return samacharpatra_smart_full_date_time($timestamp);
         case 'relative':
             return samacharpatra_smart_relative_time($timestamp);
         case 'short_time':
@@ -499,4 +516,26 @@ function samacharpatra_breadcrumbs() {
         
         echo '</nav>';
     }
+}
+
+/**
+ * Get category link by name or slug
+ * 
+ * @param string $category_name Category name or slug
+ * @return string|false Category URL or false if not found
+ */
+function samacharpatra_get_category_link($category_name) {
+    // Try by name first
+    $cat_id = get_cat_ID($category_name);
+    
+    // If not found, try by slug
+    if (!$cat_id) {
+        $category = get_category_by_slug($category_name);
+        if ($category) {
+            $cat_id = $category->term_id;
+        }
+    }
+    
+    // Return link if found
+    return $cat_id ? get_category_link($cat_id) : false;
 }

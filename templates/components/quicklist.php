@@ -1,7 +1,6 @@
 <?php
 /**
  * Quicklist Widget for Samachar Patra theme
- * Displays tabbed content with Latest, Popular, and Recommended posts
  * 
  * @package Samachar_Patra
  * @since 1.0
@@ -56,18 +55,10 @@ if (!defined('ABSPATH')) {
                                 <h4 class="quicklist-title">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h4>
-                                <div class="quicklist-meta">
-                                    <time datetime="<?php echo get_the_date('c'); ?>" class="publish-date">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        <?php 
-                                        // Use Smart Date System for relative time formatting
-                                        if (function_exists('smart_date_relative')) {
-                                            echo smart_date_relative(strtotime(get_the_date('Y-m-d H:i:s')));
-                                        } else {
-                                            echo get_the_date('M j');
-                                        }
-                                        ?>
-                                    </time>
+                                <div class="post-meta meta-item">
+                                    <?php
+                                        get_template_part('templates/parts/utils/post-meta', null, array('variant' => 'relative_time'));
+                                    ?>
                                 </div>
                             </div>
                         </article>
@@ -132,18 +123,10 @@ if (!defined('ABSPATH')) {
                                 <h4 class="quicklist-title">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h4>
-                                <div class="quicklist-meta">
-                                    <time datetime="<?php echo get_the_date('c'); ?>" class="publish-date">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        <?php 
-                                        // Use Smart Date System for short date formatting
-                                        if (function_exists('smart_date_short')) {
-                                            echo smart_date_short(get_the_time('U'));
-                                        } else {
-                                            echo get_the_date('M j');
-                                        }
-                                        ?>
-                                    </time>
+                                <div class="post-meta meta-item">
+                                    <?php
+                                        get_template_part('templates/parts/utils/post-meta', null, array('variant' => 'full_date'));
+                                    ?>
                                 </div>
                             </div>
                         </article>
@@ -213,20 +196,14 @@ if (!defined('ABSPATH')) {
                                 <h4 class="quicklist-title">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h4>
-                                <div class="quicklist-meta">
-                                    <time datetime="<?php echo get_the_date('c'); ?>" class="publish-date">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        <?php 
-                                        // Use Smart Date System for short date formatting
-                                        if (function_exists('smart_date_short')) {
-                                            echo smart_date_short(get_the_time('U'));
-                                        } else {
-                                            echo get_the_date('M j');
-                                        }
-                                        ?>
-                                    </time>
-
+                                <div class="post-meta " >
+                                    <div class="meta-item">
+                                    <?php
+                                        get_template_part('templates/parts/utils/post-meta', null, array('variant' => 'full_date'));
+                                    ?>
                                 </div>
+                                </div>
+                                
                             </div>
                         </article>
                     <?php 
