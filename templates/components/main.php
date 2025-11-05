@@ -11,23 +11,19 @@ if (!defined('ABSPATH')) {
 }
 ?>
     <div>
-        <div class="category-header">
-    <h2 class="category-title">
-        मुख्य समाचार
-    </h2>
-    <?php
-    $category_link = samacharpatra_get_category_link('main');
-    if ($category_link) : ?>
-        <a href="<?php echo esc_url($category_link); ?>" class="view-all-link">
-            सबै हेर्नुहोस्
-            <i class="fas fa-arrow-right"></i>
-        </a>
-    <?php endif; ?>
-</div>
-<div class="main-news-grid">
+        <div class="tourism-header">
+            <h2 class="section-title">
+                मुख्य समाचार
+            </h2>
+            <a href="<?php echo esc_url(home_url('/main')); ?>" class="view-all-link">
+                सबै हेर्नुहोस्
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+<div class="three-quarter-width-grid">
         <?php
             $latest_posts = get_posts(array(
-            'numberposts' => 6,
+            'numberposts' => 4,
             'category_name' => 'main',
             'orderby' => 'date',
             'order' => 'DESC'
@@ -37,17 +33,17 @@ if (!defined('ABSPATH')) {
                 foreach ($latest_posts as $post) : setup_postdata($post);
         ?>
 
-    <article class="main-news-card enhanced">
+    <article class="post-card enhanced">
         <?php if (has_post_thumbnail()) : ?>
-            <div class="news-image">
+            <div class="post-image">
                 <a href="<?php the_permalink(); ?>">
                     <?php the_post_thumbnail('samacharpatra-medium', array('alt' => get_the_title())); ?>
                 </a>
             </div>
         <?php endif; ?>
-                            
-        <div class="main-news-content">
-            <h3 class="main-news-title">
+
+        <div class="post-content">
+            <h3 class="post-title">
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
             </h3>
                                 

@@ -12,10 +12,8 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<section class="featured-news-section">
+<section class="featured-news-block">
     <div class="container">
-        
-        <div class="featured-news">
             <?php
         // Query for interview category posts
         $featured_posts = get_posts(array(
@@ -72,7 +70,6 @@ if (!defined('ABSPATH')) {
                     <p>हाल कुनै फिचर्ड समाचार उपलब्ध छैन।</p>
                 </div>
             <?php endif; ?>
-        </div>
     </div>
 </section>
 

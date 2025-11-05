@@ -114,7 +114,7 @@ if (!defined('ABSPATH')) {
                                 $sticky_logo_url = get_template_directory_uri() . '/assets/images/samacharpatraicon.png';
                             ?>
                             <?php if (file_exists($sticky_logo_path)) : ?>
-                                <img src="<?php echo esc_url($sticky_logo_url); ?>" alt="<?php bloginfo('name'); ?>" class="sticky-logo-img">
+                               <a href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo esc_url($sticky_logo_url); ?>" alt="<?php bloginfo('name'); ?>" class="sticky-logo-img"></a> 
                             <?php else : ?>
                                 <span class="sticky-logo-fallback">
                                     <i class="fas fa-home"></i>

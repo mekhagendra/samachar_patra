@@ -33,7 +33,7 @@ if (!defined('ABSPATH')) {
                 <div class="quicklist-items">
                     <?php
                     $latest_posts = get_posts(array(
-                        'numberposts' => 6,
+                        'numberposts' => 7,
                         'orderby' => 'date',
                         'order' => 'DESC',
                         'post_status' => 'publish'
@@ -55,7 +55,7 @@ if (!defined('ABSPATH')) {
                                 <h4 class="quicklist-title">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h4>
-                                <div class="post-meta meta-item">
+                                <div class="post-meta-left meta-item">
                                     <?php
                                         get_template_part('templates/parts/utils/post-meta', null, array('variant' => 'relative_time'));
                                     ?>
@@ -78,7 +78,7 @@ if (!defined('ABSPATH')) {
                     <?php
                     // Get posts from last 7 days with views
                     $popular_posts = get_posts(array(
-                        'numberposts' => 6,
+                        'numberposts' => 7,
                         'meta_key' => 'post_views_count',
                         'orderby' => 'meta_value_num',
                         'order' => 'DESC',
@@ -123,11 +123,6 @@ if (!defined('ABSPATH')) {
                                 <h4 class="quicklist-title">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h4>
-                                <div class="post-meta meta-item">
-                                    <?php
-                                        get_template_part('templates/parts/utils/post-meta', null, array('variant' => 'full_date'));
-                                    ?>
-                                </div>
                             </div>
                         </article>
                     <?php 
@@ -152,7 +147,7 @@ if (!defined('ABSPATH')) {
                         $category = get_category_by_slug($slug);
                         if ($category) {
                             $recommended_posts = get_posts(array(
-                                'numberposts' => 6,
+                                'numberposts' => 7,
                                 'category' => $category->term_id,
                                 'orderby' => 'date',
                                 'order' => 'DESC',
@@ -195,15 +190,7 @@ if (!defined('ABSPATH')) {
                             <div class="quicklist-content">
                                 <h4 class="quicklist-title">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                </h4>
-                                <div class="post-meta " >
-                                    <div class="meta-item">
-                                    <?php
-                                        get_template_part('templates/parts/utils/post-meta', null, array('variant' => 'full_date'));
-                                    ?>
-                                </div>
-                                </div>
-                                
+                                </h4> 
                             </div>
                         </article>
                     <?php 

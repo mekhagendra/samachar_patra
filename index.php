@@ -102,12 +102,12 @@ if ($is_category_route && $category_obj): ?>
                         ));
 
                         if ($category_query->have_posts()) : ?>
-                            <div class="category-posts-grid">
+                            <div class="full-post-grid">
                                 <?php while ($category_query->have_posts()) : $category_query->the_post(); ?>
-                                    <article class="category-news-item">
-                                        <div class="news-card">
+                                    <article class="post-item">
+                                        <div class="post-card">
                                             <!-- Featured Image -->
-                                            <div class="news-image">
+                                            <div class="post-image">
                                                 <?php if (has_post_thumbnail()) : ?>
                                                     <a href="<?php the_permalink(); ?>">
                                                         <?php the_post_thumbnail('medium', array(
@@ -126,28 +126,22 @@ if ($is_category_route && $category_obj): ?>
                                                  
                                             </div>
 
-                                            <!-- News Content -->
-                                            <div class="news-content">
-                                                <h3 class="main-news-title">
+                                            <!-- Post Content -->
+                                            <div class="post-content">
+                                                <h3 class="post-title">
                                                     <a href="<?php the_permalink(); ?>">
                                                         <?php the_title(); ?>
                                                     </a>
                                                 </h3>
 
-                                                <div class="news-meta">
-                                                    <div class="publish-info">
-                                                        <span class="date">
+                                                <div class="post-meta-enhanced">
+                                                    <div class="post-meta">                                        
+                                                        <time datetime="<?php echo get_the_date('c'); ?>" class="publish-date">
                                                             <i class="fas fa-calendar-alt"></i>
-                                                            <?php 
-                                                                // Smart Date functions
-                                                                if (function_exists('full_date')) {
-                                                                    echo full_date(get_the_time('U'));
-                                                                } else {
-                                                                // Fallback if Smart Date functions not loaded
-                                                                    echo get_the_date('F j, Y');
-                                                                }
-                                                            ?>      
-                                                        </span>
+                                                            <?php
+                                                                get_template_part('templates/parts/utils/post-meta', null, array('variant' => 'full_date'));
+                                                            ?>
+                                                        </time>
                                                     </div>
                                                 </div>
                                             </div>
@@ -191,7 +185,7 @@ if ($is_category_route && $category_obj): ?>
             <section class="latest-news">
                 <div class="container">
                     <!-- FIXED: Proper two-column layout -->
-                    <div class="content-wrapper responsive-layout">
+                    <div class="content-wrapper three-one-layout">
                         <!-- RIGHT MAIN CONTENT: Main News -->
                         <div class="main-content article-content-area">
                             <?php get_template_part('templates/components/main'); ?>
@@ -205,8 +199,14 @@ if ($is_category_route && $category_obj): ?>
                     </div>
                 </div>
             </section>
+
+
+            <!-- Trending News Section -->
+            <?php get_template_part('templates/components/trendings'); ?>
             <!-- technology -->
             <?php get_template_part('templates/components/technology'); ?>
+            <!-- Tourism News Section -->
+            <?php get_template_part('templates/components/tourism'); ?>
         <?php endif; ?>
 
 <?php 
