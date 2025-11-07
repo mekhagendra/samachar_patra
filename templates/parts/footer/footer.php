@@ -78,7 +78,7 @@
                             <div class="contact-info">
                                 <div class="footer-links">
                                     <i class="fas fa-map-marker-alt"></i>
-                                    <span>काठमाडौं ११ बवरमहल, नेपाल</span>
+                                    <span>महालक्ष्मि न. पा. ०१  ललितपुर, नेपाल</span>
                                 </div>
                                 <div class="footer-links">
                                     <i class="fas fa-phone"></i>

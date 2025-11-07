@@ -13,16 +13,16 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<div class="trending-section">
+<div class="post-section">
     <div class="container">
-        <div class="trending-header">
+        <div class="section-header-hot">
             <h2 class="section-title">
                 ट्रेन्डिङ
             </h2>
         </div>
 
-        <div class="trending-layout">
-            <div class="trending-content">
+        <div class="three-one-layout">
+            <div>
                 <?php
                 // Query for trending posts
                 $trending_args = array(
@@ -48,34 +48,35 @@ if (!defined('ABSPATH')) {
                     $horizontal_posts = array_slice($all_posts, 0, 4);
                     $vertical_posts = array_slice($all_posts, 4, 2);
                 ?>
+                <div class="sixty-grid">
+
                 
-                <div class="trending-grid">
                     <!-- Left Column: 4 Horizontal Posts -->
-                    <div class="trending-horizontal-col">
+                    <div class="post-col">
                         <?php foreach ($horizontal_posts as $post) : setup_postdata($post); ?>
-                            <article class="trending-horizontal-card">
-                                <div class="trending-card-content">
+                            <article class="post-card-horizontal">
+                                <div class="post-card-content">
                                     <?php if (has_post_thumbnail()) : ?>
-                                        <div class="trending-image-wrapper">
+                                        <div class="post-image-wrapper-horizontal">
                                             <a href="<?php the_permalink(); ?>">
                                                 <?php the_post_thumbnail('thumbnail', array(
-                                                    'class' => 'trending-image',
+                                                    'class' => 'post-image-sm',
                                                     'loading' => 'lazy'
                                                 )); ?>
                                             </a>
                                         </div>
                                     <?php else : ?>
-                                        <div class="trending-image-wrapper">
+                                        <div class="post-image-wrapper-horizontal">
                                             <a href="<?php the_permalink(); ?>">
                                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/placeholder.jpg" 
                                                      alt="<?php the_title(); ?>" 
-                                                     class="trending-image">
+                                                     class="post-image-sm">
                                             </a>
                                         </div>
                                     <?php endif; ?>
                                     
-                                    <div class="trending-text-content">
-                                        <h3 class="trending-title">
+                                    <div class="post-text-content">
+                                        <h3 class="post-title post-title-sm">
                                             <a href="<?php the_permalink(); ?>">
                                                 <?php the_title(); ?>
                                             </a>
@@ -94,30 +95,30 @@ if (!defined('ABSPATH')) {
                     </div>
 
                     <!-- Right Column: 2 Vertical Posts -->
-                    <div class="trending-vertical-col">
+                    <div class="post-col">
                         <?php foreach ($vertical_posts as $post) : setup_postdata($post); ?>
-                            <article class="trending-vertical-card">
+                            <article class="post-card-vertical">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <div class="trending-vertical-image-wrapper">
+                                    <div class="post-image-wrapper">
                                         <a href="<?php the_permalink(); ?>">
                                             <?php the_post_thumbnail('medium', array(
-                                                'class' => 'trending-vertical-image',
+                                                'class' => 'post-image',
                                                 'loading' => 'lazy'
                                             )); ?>
                                         </a>
                                     </div>
                                 <?php else : ?>
-                                    <div class="trending-vertical-image-wrapper">
+                                    <div class="post-image-wrapper">
                                         <a href="<?php the_permalink(); ?>">
                                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/placeholder.jpg" 
                                                  alt="<?php the_title(); ?>" 
-                                                 class="trending-vertical-image">
+                                                 class="post-image">
                                         </a>
                                     </div>
                                 <?php endif; ?>
                                 
-                                <div class="trending-vertical-content">
-                                    <h3 class="trending-vertical-title">
+                                <div class="post-content">
+                                    <h3 class="post-title post-title-sm">
                                         <a href="<?php the_permalink(); ?>">
                                             <?php the_title(); ?>
                                         </a>
@@ -136,7 +137,7 @@ if (!defined('ABSPATH')) {
                 </div>
                 
                 <?php else : ?>
-                    <p class="no-trending">कुनै ट्रेन्डिङ समाचार भेटिएन।</p>
+                    <p class="no-posts">कुनै ट्रेन्डिङ समाचार भेटिएन।</p>
                 <?php endif; ?>
             </div>
         </div>

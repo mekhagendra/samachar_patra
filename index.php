@@ -46,9 +46,9 @@ $category_routes = array(
     'society' => 'society',
     'views' => 'views',
     'agriculture' => 'agriculture',
-    'world' => 'world',
     'environment' => 'environment',
     'main' => 'main',
+    'tourism' => 'tourism'
 );
 
 // Check if current URL matches a category route
@@ -82,6 +82,15 @@ if ($is_category_route && $category_obj): ?>
     <!-- Category Listing Page -->
     <section class="category-listing-page">
         <div class="container">
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs-wrapper">
+                <?php 
+                echo '<p id="breadcrumbs">';
+                echo '<a href="' . home_url() . '"><i class="fas fa-home"></i> गृहपृष्ठ</a> &raquo; ';
+                echo '<span>' . esc_html($category_obj->name) . '</span>';
+                echo '</p>';
+                ?>
+            </div>
             <!-- Category Content -->
                 <div class="category-content">
                     <?php
@@ -102,16 +111,16 @@ if ($is_category_route && $category_obj): ?>
                         ));
 
                         if ($category_query->have_posts()) : ?>
-                            <div class="full-post-grid">
+                            <div class="full-width-grid">
                                 <?php while ($category_query->have_posts()) : $category_query->the_post(); ?>
                                     <article class="post-item">
-                                        <div class="post-card">
+                                        <div class="post-card enhanced">
                                             <!-- Featured Image -->
                                             <div class="post-image">
                                                 <?php if (has_post_thumbnail()) : ?>
                                                     <a href="<?php the_permalink(); ?>">
                                                         <?php the_post_thumbnail('medium', array(
-                                                            'class' => 'img-fluid',
+                                                            'class' => 'post-image',
                                                             'alt' => get_the_title()
                                                         )); ?>
                                                     </a>
@@ -128,7 +137,7 @@ if ($is_category_route && $category_obj): ?>
 
                                             <!-- Post Content -->
                                             <div class="post-content">
-                                                <h3 class="post-title">
+                                                <h3 class="post-title post-title-sm">
                                                     <a href="<?php the_permalink(); ?>">
                                                         <?php the_title(); ?>
                                                     </a>

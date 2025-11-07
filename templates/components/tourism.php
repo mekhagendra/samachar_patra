@@ -13,13 +13,13 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<div class="tourism-section">
+<div class="post-section">
     <div class="container">
         
 
-        <div class="tourism-layout">
+        <div class="three-one-layout">
             <!-- Main Tourism Content - 3/4 width -->
-            <div class="tourism-content">
+            <div class="three-one-content">
                 <?php
                 // Query for tourism posts
                 $tourism_args = array(
@@ -47,10 +47,9 @@ if (!defined('ABSPATH')) {
                     $horizontal_posts = array_slice($all_posts, 2, 4);
                 ?>
                 
-                <div class="tourism-grid">
-                    <div class="tourism-header">
+                <div class="sixty-grid-col">
+                    <div class="section-header">
             <h2 class="section-title">
-                <i class="fas fa-plane"></i>
                 पर्यटन
             </h2>
             <a href="<?php echo esc_url(home_url('/tourism')); ?>" class="view-all-link">
@@ -59,30 +58,30 @@ if (!defined('ABSPATH')) {
             </a>
         </div>
                     <!-- First Row: 2 Vertical Posts -->
-                    <div class="tourism-vertical-row">
+                    <div class="post-row">
                         <?php foreach ($vertical_posts as $post) : setup_postdata($post); ?>
-                            <article class="tourism-vertical-card">
+                            <article class="post-card-vertical">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <div class="tourism-vertical-image-wrapper">
+                                    <div class="post-image-wrapper-vertical">
                                         <a href="<?php the_permalink(); ?>">
                                             <?php the_post_thumbnail('medium', array(
-                                                'class' => 'tourism-vertical-image',
+                                                'class' => 'post-image',
                                                 'loading' => 'lazy'
                                             )); ?>
                                         </a>
                                     </div>
                                 <?php else : ?>
-                                    <div class="tourism-vertical-image-wrapper">
+                                    <div class="post-image-wrapper">
                                         <a href="<?php the_permalink(); ?>">
                                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/placeholder.jpg" 
                                                  alt="<?php the_title_attribute(); ?>" 
-                                                 class="tourism-vertical-image">
+                                                 class="post-image">
                                         </a>
                                     </div>
                                 <?php endif; ?>
                                 
-                                <div class="tourism-vertical-content">
-                                    <h3 class="tourism-vertical-title">
+                                <div class="post-content">
+                                    <h3 class="post-title post-title-sm">
                                         <a href="<?php the_permalink(); ?>">
                                             <?php the_title(); ?>
                                         </a>
@@ -100,31 +99,31 @@ if (!defined('ABSPATH')) {
                     </div>
 
                     <!-- Next 2 Rows: 4 Horizontal Posts -->
-                    <div class="tourism-horizontal-section">
+                    <div class="post-section-horizontal">
                         <?php foreach ($horizontal_posts as $post) : setup_postdata($post); ?>
-                            <article class="tourism-horizontal-card">
-                                <div class="tourism-card-content">
+                            <article class="post-card-horizontal">
+                                <div class="post-card-content">
                                     <?php if (has_post_thumbnail()) : ?>
-                                        <div class="tourism-image-wrapper">
+                                        <div class="post-image-wrapper-horizontal">
                                             <a href="<?php the_permalink(); ?>">
                                                 <?php the_post_thumbnail('thumbnail', array(
-                                                    'class' => 'tourism-image',
+                                                    'class' => 'post-image-sm',
                                                     'loading' => 'lazy'
                                                 )); ?>
                                             </a>
                                         </div>
                                     <?php else : ?>
-                                        <div class="tourism-image-wrapper">
+                                        <div class="post-image-wrapper-horizontal">
                                             <a href="<?php the_permalink(); ?>">
                                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/placeholder.jpg" 
                                                      alt="<?php the_title_attribute(); ?>" 
-                                                     class="tourism-image">
+                                                     class="post-image-sm">
                                             </a>
                                         </div>
                                     <?php endif; ?>
                                     
-                                    <div class="tourism-text-content">
-                                        <h3 class="tourism-title">
+                                    <div class="post-text-content">
+                                        <h3 class="post-title post-title-sm">
                                             <a href="<?php the_permalink(); ?>">
                                                 <?php the_title(); ?>
                                             </a>
@@ -144,7 +143,7 @@ if (!defined('ABSPATH')) {
                 </div>
                 
                 <?php else : ?>
-                    <p class="no-tourism">कुनै पर्यटन समाचार भेटिएन।</p>
+                    <p class="no-post">कुनै पर्यटन समाचार भेटिएन।</p>
                 <?php endif; ?>
             </div>
         </div>

@@ -52,9 +52,9 @@ if (!defined('ABSPATH')) {
                                 </div>
                             <?php endif; ?>
                             <div class="quicklist-content">
-                                <h4 class="quicklist-title">
+                                <h3 class="post-title post-title-xs">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                </h4>
+                                </h3>
                                 <div class="post-meta-left meta-item">
                                     <?php
                                         get_template_part('templates/parts/utils/post-meta', null, array('variant' => 'relative_time'));
@@ -120,7 +120,7 @@ if (!defined('ABSPATH')) {
                                 </div>
                             <?php endif; ?>
                             <div class="quicklist-content">
-                                <h4 class="quicklist-title">
+                                <h4 class="post-title post-title-xs">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h4>
                             </div>
@@ -188,7 +188,7 @@ if (!defined('ABSPATH')) {
                                 </div>
                             <?php endif; ?>
                             <div class="quicklist-content">
-                                <h4 class="quicklist-title">
+                                <h4 class="post-title post-title-xs">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h4> 
                             </div>

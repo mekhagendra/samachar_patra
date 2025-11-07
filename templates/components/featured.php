@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) {
         if (!empty($featured_posts)) :
             foreach ($featured_posts as $post) : setup_postdata($post);
     ?>
-                <article class="featured-news-item featured-news-<?php echo $post_count; ?>">
+                <article class="featured-news-item featured-news<?php echo $post_count; ?>">
                     <div class="featured-title-row">
                         <h1 class="featured-news-title">
                             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>

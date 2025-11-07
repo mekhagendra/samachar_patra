@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
 }
 ?>
     <div>
-        <div class="tourism-header">
+        <div class="section-header">
             <h2 class="section-title">
                 मुख्य समाचार
             </h2>
@@ -43,15 +43,9 @@ if (!defined('ABSPATH')) {
         <?php endif; ?>
 
         <div class="post-content">
-            <h3 class="post-title">
+            <h3 class="post-title post-title-md">
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
             </h3>
-                                
-            <div class="post-meta meta-item">
-                <?php
-                    get_template_part('templates/parts/utils/post-meta', null, array('variant' => 'full_date'));
-                ?>
-            </div>
         </div>
     </article>
     <?php endforeach; wp_reset_postdata(); endif; ?>

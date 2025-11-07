@@ -127,7 +127,7 @@ ob_start();
                     ?>
                         <div class="related-news-section">
                             <h3 class="related-news-title">थप सम्बन्धित समाचार</h3>
-                            <div class="related-news-grid">
+                            <div class="full-width-grid">
                                 <?php foreach ($related_posts as $post) : setup_postdata($post); ?>
                                     <article class="related-news-item">
                                         <?php if (has_post_thumbnail()) : ?>
@@ -138,7 +138,7 @@ ob_start();
                                             </div>
                                         <?php endif; ?>
                                         <div class="related-news-content">
-                                            <h4 class="main-news-title">
+                                            <h4 class="post-title post-title-sm">
                                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                             </h4>
                                         </div>

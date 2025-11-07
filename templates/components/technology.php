@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 }
 ?>
 <div class="container">
-    <div class="tourism-header">
+    <div class="section-header">
             <h2 class="section-title">
                 प्रविधि
             </h2>
@@ -50,18 +50,6 @@ if (!defined('ABSPATH')) {
             <h3 class="post-title">
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
             </h3>
-
-            <!-- Author and Date Info -->
-            <div class="post-meta-enhanced">
-                <div class="post-meta">                                        
-                    <time datetime="<?php echo get_the_date('c'); ?>" class="publish-date">
-                        <i class="fas fa-calendar-alt"></i>
-                            <?php
-                                get_template_part('templates/parts/utils/post-meta', null, array('variant' => 'full_date'));
-                            ?>
-                    </time>
-                </div>
-            </div>
         </div>
     </article>
     <?php endforeach; wp_reset_postdata(); endif; ?>
