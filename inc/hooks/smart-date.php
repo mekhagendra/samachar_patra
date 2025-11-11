@@ -275,16 +275,11 @@ function relative_time($timestamp = null) {
             return $hours_nepali . ' घण्टा अघि';
         } else {
             $days = floor($diff / 86400);
-            $remaining_hours = floor(($diff % 86400) / 3600);
-            
             $days_nepali = to_nepali_digits($days);
             
-            if ($remaining_hours > 0 && $days < 7) {
-                $hours_nepali = to_nepali_digits($remaining_hours);
-                return $days_nepali . ' दिन ' . $hours_nepali . ' घण्टा अघि';
-            } else {
+            
                 return $days_nepali . ' दिन अघि';
-            }
+            
         }
     } else {
         if ($diff < 60) {
