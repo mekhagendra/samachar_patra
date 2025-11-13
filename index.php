@@ -186,36 +186,15 @@ if ($is_category_route && $category_obj): ?>
             </section>
 
         <?php else: ?>
-    
-            <!-- Featured News Section -->
-            <?php get_template_part('templates/components/featured'); ?>
-            
-            <!-- Main News Section with Sidebar -->
-            <section class="latest-news">
-                <div class="container">
-                    <!-- FIXED: Proper two-column layout -->
-                    <div class="content-wrapper three-one-layout">
-                        <!-- RIGHT MAIN CONTENT: Main News -->
-                        <div class="main-content article-content-area">
-                            <?php get_template_part('templates/components/main'); ?>
-                        </div>
-                        <!-- LEFT SIDEBAR: Quicklist -->
-                        <aside class="sidebar quicklist-sidebar">
-                            <?php get_template_part('templates/components/quicklist'); ?>
-                        </aside>
-                        
-                        
-                    </div>
-                </div>
-            </section>
 
+             <!-- Homepage - Single Widget Area -->
+    <?php if (is_active_sidebar('homepage-widgets')) : ?>
+        <?php dynamic_sidebar('homepage-widgets'); ?>
+    <?php else : ?>
+        <div class="no-widgets-message" style="padding: 40px; text-align: center; background: #f5f5f5; margin: 20px;">
 
-            <!-- Trending News Section -->
-            <?php get_template_part('templates/components/trendings'); ?>
-            <!-- technology -->
-            <?php get_template_part('templates/components/technology'); ?>
-            <!-- Tourism News Section -->
-            <?php get_template_part('templates/components/tourism'); ?>
+        </div>
+    <?php endif; ?>
         <?php endif; ?>
 
 <?php 

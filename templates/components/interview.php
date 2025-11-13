@@ -11,11 +11,17 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+// Get widget settings with defaults
+$interview_title = sanitize_text_field(get_query_var('interview_title', 'अन्तर्वार्ता'));
+$interview_posts_count = absint(get_query_var('interview_posts_count', 8));
+$interview_category = sanitize_text_field(get_query_var('interview_category', 'interview'));
+$interview_grid_columns = absint(get_query_var('interview_grid_columns', 4));
 ?>
 <div class="container">
  <div class="category-header">
         <h2 class="category-title">
-            अन्तर्वार्ता
+            <?php echo esc_html($interview_title); ?>
         </h2>
         <a href="<?php echo esc_url(get_category_link(get_cat_ID('video'))); ?>" class="view-all-link">
             सबै हेर्नुहोस्
@@ -26,8 +32,8 @@ if (!defined('ABSPATH')) {
     <?php
         // Query for interview category posts
         $interview_posts = get_posts(array(
-            'numberposts' => 8, // 8 posts for 4 columns x 2 rows
-            'category_name' => 'interview', // Change this to your interview category slug
+            'numberposts' => $interview_posts_count,
+            'category_name' => $interview_category,
             'orderby' => 'date',
             'order' => 'DESC'
         ));

@@ -12,10 +12,15 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Get posts from 'video' category only, with fallback to recent posts
+// Get widget settings with defaults
+$video_title = sanitize_text_field(get_query_var('video_title', 'भिडियो'));
+$video_posts_count = absint(get_query_var('video_posts_count', 3));
+$video_category = sanitize_text_field(get_query_var('video_category', 'video'));
+
+// Get posts from video category
 $video_posts = get_posts(array(
-    'numberposts' => 3,
-    'category_name' => 'video',
+    'numberposts' => $video_posts_count,
+    'category_name' => $video_category,
     'orderby' => 'date',
     'order' => 'DESC'
 ));
@@ -26,7 +31,7 @@ if (!empty($video_posts)) : ?>
     <!-- Video Section Header -->
     <div class="category-header">
         <h2 class="category-title">
-            भिडियो
+            <?php echo esc_html($video_title); ?>
         </h2>
         <a href="<?php echo esc_url(get_category_link(get_cat_ID('video'))); ?>" class="view-all-link">
             सबै हेर्नुहोस्

@@ -11,11 +11,16 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+// Get widget settings with defaults
+$technology_title = sanitize_text_field(get_query_var('technology_title', 'प्रविधि'));
+$technology_posts_count = absint(get_query_var('technology_posts_count', 4));
+$technology_category = sanitize_text_field(get_query_var('technology_category', 'technology'));
 ?>
 <div class="container">
     <div class="section-header">
             <h2 class="section-title">
-                प्रविधि
+                <?php echo esc_html($technology_title); ?>
             </h2>
             <a href="<?php echo esc_url(home_url('/technology')); ?>" class="view-all-link">
                 सबै हेर्नुहोस्
@@ -24,10 +29,10 @@ if (!defined('ABSPATH')) {
         </div>
 <div class="full-width-grid">
     <?php
-        // Query for interview category posts
+        // Query for technology category posts
         $technology_posts = get_posts(array(
-            'numberposts' => 4, // 4 posts for 4 columns x 1 row
-            'category_name' => 'technology', // Change this to your interview category slug
+            'numberposts' => $technology_posts_count,
+            'category_name' => $technology_category,
             'orderby' => 'date',
             'order' => 'DESC'
         ));

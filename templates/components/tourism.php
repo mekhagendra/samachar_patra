@@ -11,6 +11,11 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+// Get widget settings with defaults
+$tourism_title = sanitize_text_field(get_query_var('tourism_title', 'पर्यटन'));
+$tourism_posts_count = absint(get_query_var('tourism_posts_count', 6));
+$tourism_category = sanitize_text_field(get_query_var('tourism_category', 'tourism'));
 ?>
 
 <div class="post-section">
@@ -23,9 +28,9 @@ if (!defined('ABSPATH')) {
                 <?php
                 // Query for tourism posts
                 $tourism_args = array(
-                    'posts_per_page' => 6,
+                    'posts_per_page' => $tourism_posts_count,
                     'post_status' => 'publish',
-                    'category_name' => 'tourism',
+                    'category_name' => $tourism_category,
                     'orderby' => 'date',
                     'order' => 'DESC',
                     'ignore_sticky_posts' => 1

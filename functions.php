@@ -109,7 +109,7 @@ foreach ($legacy_includes as $file) {
 }
 
 /**
- * Widget includes
+ * Widget includes - Legacy widgets
  */
 $widget_files = array(
     '/widgets/province-full-widget.php',
@@ -124,14 +124,44 @@ foreach ($widget_files as $widget_file) {
 }
 
 /**
+ * New widget system includes
+ */
+$new_widget_files = array(
+    '/inc/widgets/class-breaking-widget.php',
+    '/inc/widgets/class-featured-widget.php',
+    '/inc/widgets/class-main-widget.php',
+    '/inc/widgets/class-quicklist-widget.php',
+    '/inc/widgets/class-trending-widget.php',
+    '/inc/widgets/class-technology-widget.php',
+    '/inc/widgets/class-tourism-widget.php',
+    '/inc/widgets/class-interview-widget.php',
+    '/inc/widgets/class-video-widget.php'
+);
+
+foreach ($new_widget_files as $widget_file) {
+    samacharpatra_safe_include($widget_file, false);
+}
+
+/**
  * Register widgets
  */
 function samacharpatra_register_widgets() {
+    // Legacy widgets
     $widgets = array(
         'Samacharpatra_Province_Full_Widget',
         'Test_Simple_Widget', 
         'Samacharpatra_Interview4X_Widget',
-        'News_8Col_Widget'
+        'News_8Col_Widget',
+        // New widget system
+        'SP_Breaking_Widget',
+        'SP_Featured_Widget',
+        'SP_Main_Widget',
+        'SP_Quicklist_Widget',
+        'SP_Trending_Widget',
+        'SP_Technology_Widget',
+        'SP_Tourism_Widget',
+        'SP_Interview_Widget',
+        'SP_Video_Widget'
     );
 
     foreach ($widgets as $widget_class) {

@@ -11,13 +11,18 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+// Get widget settings with defaults
+$trending_title = sanitize_text_field(get_query_var('trending_title', 'ट्रेन्डिङ'));
+$trending_posts_count = absint(get_query_var('trending_posts_count', 6));
+$trending_category = sanitize_text_field(get_query_var('trending_category', ''));
 ?>
 
 <div class="post-section">
     <div class="container">
         <div class="section-header-hot">
             <h2 class="section-title">
-                ट्रेन्डिङ
+                <?php echo esc_html($trending_title); ?>
             </h2>
         </div>
 
@@ -26,12 +31,17 @@ if (!defined('ABSPATH')) {
                 <?php
                 // Query for trending posts
                 $trending_args = array(
-                    'posts_per_page' => 6,
+                    'posts_per_page' => $trending_posts_count,
                     'post_status' => 'publish',
                     'orderby' => 'date',
                     'order' => 'DESC',
                     'ignore_sticky_posts' => 1
                 );
+                
+                // Add category filter if specified
+                if (!empty($trending_category)) {
+                    $trending_args['category_name'] = $trending_category;
+                }
                 
                 $trending_query = new WP_Query($trending_args);
                 

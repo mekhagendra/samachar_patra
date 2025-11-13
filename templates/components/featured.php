@@ -15,10 +15,15 @@ if (!defined('ABSPATH')) {
 <section class="featured-news-block">
     <div class="container">
             <?php
-        // Query for interview category posts
+        // Get widget settings if available
+        $widget_title = get_query_var('featured_title', '');
+        $posts_count = get_query_var('featured_posts_count', 3);
+        $category_slug = get_query_var('featured_category', 'featured');
+        
+        // Query for featured category posts
         $featured_posts = get_posts(array(
-            'numberposts' => 3, 
-            'category_name' => 'featured',
+            'numberposts' => absint($posts_count),
+            'category_name' => sanitize_text_field($category_slug),
             'orderby' => 'date',
             'order' => 'DESC'
         ));

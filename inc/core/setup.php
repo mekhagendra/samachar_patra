@@ -131,15 +131,6 @@ add_action('after_setup_theme', 'samacharpatra_content_width', 0);
  * Register widget area.
  */
 function samacharpatra_widgets_init() {
-    register_sidebar(array(
-        'name'          => __('Main Sidebar', 'samacharpatra'),
-        'id'            => 'sidebar-1',
-        'description'   => __('Add widgets here to appear in your sidebar.', 'samacharpatra'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>',
-    ));
 
     register_sidebar(array(
         'name'          => __('Homepage Widget Area', 'samacharpatra'),
@@ -190,6 +181,7 @@ function samacharpatra_widgets_init() {
         'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
     ));
+
 }
 add_action('widgets_init', 'samacharpatra_widgets_init');
 

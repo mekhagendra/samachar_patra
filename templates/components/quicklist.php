@@ -11,29 +11,47 @@ if (!defined('ABSPATH')) {
 ?>
 
 <div class="quicklist-widget">
+    <?php
+    // Get widget settings if available
+    $posts_per_tab = get_query_var('quicklist_posts_per_tab', 7);
+    $show_latest = get_query_var('quicklist_show_latest', true);
+    $show_popular = get_query_var('quicklist_show_popular', true);
+    $show_recommended = get_query_var('quicklist_show_recommended', true);
+    $popular_days = get_query_var('quicklist_popular_days', 7);
+    
+    // Determine active tab
+    $active_tab = $show_latest ? 'latest' : ($show_popular ? 'popular' : 'recommended');
+    ?>
     <div class="quicklist-tabs">
         <div class="tab-navigation">
-            <button class="tab-btn active" data-tab="latest-tab">
+            <?php if ($show_latest) : ?>
+            <button class="tab-btn <?php echo $active_tab === 'latest' ? 'active' : ''; ?>" data-tab="latest-tab">
                 <i class="fas fa-bolt"></i>
                 ताजा
             </button>
-            <button class="tab-btn" data-tab="popular-tab">
+            <?php endif; ?>
+            <?php if ($show_popular) : ?>
+            <button class="tab-btn <?php echo $active_tab === 'popular' ? 'active' : ''; ?>" data-tab="popular-tab">
                 <i class="fas fa-fire"></i>
                 लोकप्रिय
             </button>
-            <button class="tab-btn" data-tab="recommended-tab">
+            <?php endif; ?>
+            <?php if ($show_recommended) : ?>
+            <button class="tab-btn <?php echo $active_tab === 'recommended' ? 'active' : ''; ?>" data-tab="recommended-tab">
                 <i class="fas fa-star"></i>
                 सिफारिस
             </button>
+            <?php endif; ?>
         </div>
         
         <div class="tab-content">
             <!-- Latest Tab -->
-            <div class="tab-pane active" id="latest-tab">
+            <?php if ($show_latest) : ?>
+            <div class="tab-pane <?php echo $active_tab === 'latest' ? 'active' : ''; ?>" id="latest-tab">
                 <div class="quicklist-items">
                     <?php
                     $latest_posts = get_posts(array(
-                        'numberposts' => 7,
+                        'numberposts' => absint($posts_per_tab),
                         'orderby' => 'date',
                         'order' => 'DESC',
                         'post_status' => 'publish'
@@ -71,21 +89,23 @@ if (!defined('ABSPATH')) {
                     <?php endif; ?>
                 </div>
             </div>
+            <?php endif; ?>
 
             <!-- Popular Tab -->
-            <div class="tab-pane" id="popular-tab">
+            <?php if ($show_popular) : ?>
+            <div class="tab-pane <?php echo $active_tab === 'popular' ? 'active' : ''; ?>" id="popular-tab">
                 <div class="quicklist-items">
                     <?php
-                    // Get posts from last 7 days with views
+                    // Get posts from last X days with views
                     $popular_posts = get_posts(array(
-                        'numberposts' => 7,
+                        'numberposts' => absint($posts_per_tab),
                         'meta_key' => 'post_views_count',
                         'orderby' => 'meta_value_num',
                         'order' => 'DESC',
                         'post_status' => 'publish',
                         'date_query' => array(
                             array(
-                                'after' => '7 days ago'
+                                'after' => absint($popular_days) . ' days ago'
                             ),
                         ),
                         'meta_query' => array(
@@ -100,7 +120,7 @@ if (!defined('ABSPATH')) {
                     // Fallback if no popular posts
                     if (empty($popular_posts)) {
                         $popular_posts = get_posts(array(
-                            'numberposts' => 6,
+                            'numberposts' => absint($posts_per_tab),
                             'orderby' => 'comment_count',
                             'order' => 'DESC',
                             'post_status' => 'publish'
@@ -134,9 +154,11 @@ if (!defined('ABSPATH')) {
                     <?php endif; ?>
                 </div>
             </div>
+            <?php endif; ?>
 
             <!-- Recommended Tab -->
-            <div class="tab-pane" id="recommended-tab">
+            <?php if ($show_recommended) : ?>
+            <div class="tab-pane <?php echo $active_tab === 'recommended' ? 'active' : ''; ?>" id="recommended-tab">
                 <div class="quicklist-items">
                     <?php
                     // Try to find recommended category
@@ -147,7 +169,7 @@ if (!defined('ABSPATH')) {
                         $category = get_category_by_slug($slug);
                         if ($category) {
                             $recommended_posts = get_posts(array(
-                                'numberposts' => 7,
+                                'numberposts' => absint($posts_per_tab),
                                 'category' => $category->term_id,
                                 'orderby' => 'date',
                                 'order' => 'DESC',
@@ -160,7 +182,7 @@ if (!defined('ABSPATH')) {
                     // Fallback to highly viewed posts
                     if (empty($recommended_posts)) {
                         $recommended_posts = get_posts(array(
-                            'numberposts' => 6,
+                            'numberposts' => absint($posts_per_tab),
                             'meta_key' => 'post_views_count',
                             'orderby' => 'meta_value_num',
                             'order' => 'DESC',
@@ -202,6 +224,7 @@ if (!defined('ABSPATH')) {
                     <?php endif; ?>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>

@@ -11,9 +11,15 @@ if (!defined('ABSPATH')) {
 }
 ?>
     <div>
+        <?php
+        // Get widget settings if available
+        $widget_title = get_query_var('main_title', 'मुख्य समाचार');
+        $posts_count = get_query_var('main_posts_count', 4);
+        $category_slug = get_query_var('main_category', 'main');
+        ?>
         <div class="section-header">
             <h2 class="section-title">
-                मुख्य समाचार
+                <?php echo esc_html($widget_title); ?>
             </h2>
             <a href="<?php echo esc_url(home_url('/main')); ?>" class="view-all-link">
                 सबै हेर्नुहोस्
@@ -23,8 +29,8 @@ if (!defined('ABSPATH')) {
 <div class="three-quarter-width-grid">
         <?php
             $latest_posts = get_posts(array(
-            'numberposts' => 4,
-            'category_name' => 'main',
+            'numberposts' => absint($posts_count),
+            'category_name' => sanitize_text_field($category_slug),
             'orderby' => 'date',
             'order' => 'DESC'
             ));

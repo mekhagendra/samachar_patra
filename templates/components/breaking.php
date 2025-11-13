@@ -18,9 +18,14 @@ if (!defined('ABSPATH')) {
     <div class="container">
         <div class="breaking-news-ticker">
             <?php
+            // Get widget settings if available
+            $widget_title = get_query_var('breaking_title', 'ब्रेकिङ न्युज');
+            $posts_count = get_query_var('breaking_posts_count', 5);
+            $time_filter = get_query_var('breaking_time_filter', 2);
+            
             // Get breaking news posts (posts with 'breaking' tag or category)
             $breaking_posts = get_posts(array(
-                'numberposts' => 5,
+                'numberposts' => absint($posts_count),
                 'meta_query' => array(
                     'relation' => 'OR',
                     array(
@@ -38,13 +43,13 @@ if (!defined('ABSPATH')) {
                 'order' => 'DESC'
             ));
             
-            // If no breaking posts found, get latest posts from last 2 hours
+            // If no breaking posts found, get latest posts from last X hours
             if (empty($breaking_posts)) {
                 $breaking_posts = get_posts(array(
-                    'numberposts' => 3,
+                    'numberposts' => absint($posts_count),
                     'date_query' => array(
                         array(
-                            'after' => '2 hours ago'
+                            'after' => absint($time_filter) . ' hours ago'
                         ),
                     ),
                     'orderby' => 'date',
@@ -56,7 +61,7 @@ if (!defined('ABSPATH')) {
                 <div class="breaking-ticker-wrapper">
                     <div class="breaking-label">
                         <i class="fas fa-bolt"></i>
-                        <span>ब्रेकिङ न्युज</span>
+                        <span><?php echo esc_html($widget_title); ?></span>
                     </div>
                     
                     <div class="breaking-ticker">
