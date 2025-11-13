@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
         </div>
 
         <div class="three-one-layout">
-            <div>
+            <div class="three-one-content">
                 <?php
                 // Query for trending posts
                 $trending_args = array(
